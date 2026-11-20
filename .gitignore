@@ -23,8 +23,9 @@ build/
 .mypy_cache/
 # Ruff linter/formatter cache
 .ruff_cache/
-# Coverage.py raw measurement data
+# Coverage.py raw measurement data (including parallel pytest-cov files)
 .coverage
+.coverage.*
 # Coverage.py HTML report output
 htmlcov/
 
@@ -108,6 +109,8 @@ b3v3check.log
 # ==========================================
 # 5. Layouts, Parasitics & DRC/LVS (OpenROAD, Magic, KLayout, Netgen, OpenRAM)
 # ==========================================
+# OpenROAD native OpenDB database files
+*.odb
 # GDSII stream layout files (uncompressed and gzipped)
 *.gds
 *.gds.gz
@@ -131,6 +134,8 @@ b3v3check.log
 *.spice.out
 # Design Rule Check (DRC) report files
 *.drc
+# KLayout DRC/LVS report database files
+*.lyrdb
 # Layout Versus Schematic (LVS) report files and Netgen JSON outputs
 *.lvs
 *.lvs.json
@@ -178,11 +183,14 @@ wandb/
 *.zip
 
 # ==========================================
-# 7. Keep Small Unit Test Fixtures Tracked!
+# 7. Keep Small Unit Test Fixtures & Starter Templates Tracked!
 # ==========================================
 # Re-include the test fixtures directory and all files inside it
 !tests/fixtures/
 !tests/fixtures/**
+# Re-include starter project templates and all files inside them
+!templates/
+!templates/**
 
 # ==========================================
 # 8. OS, IDEs & Notebooks
@@ -195,7 +203,13 @@ Thumbs.db
 .vscode/
 # JetBrains IDE (PyCharm/IntelliJ) project files
 .idea/
+# Terminal editor (Vim/Nano) swap and backup files
+*.swp
+*.swo
+*~
 # Jupyter Notebook autosave checkpoints
 .ipynb_checkpoints/
-# Local environment variables and secrets (never commit)
+# Local environment variables and secrets (keep example template tracked)
 .env
+.env.*
+!.env.example
